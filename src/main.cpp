@@ -2,5 +2,5 @@
 #include "game/game.h"
 
 int main(int, char**) {
-    Game game();
+    Game game(sf::Vector2f(800, 600));
 }

@@ -3,8 +3,13 @@
 
 class Game {
     public:
-        Game();
+        Game(sf::Vector2f size);
+        ~Game();
 
     private:
-        sf::Window mWindow;
+        void display();
+
+        sf::Window mWindow;    
+        bool open = 1;
+        float deltaTime;
 };
