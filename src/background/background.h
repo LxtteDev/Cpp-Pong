@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
+#include <vector>
 
 class Background {
     public:
@@ -11,5 +12,5 @@ class Background {
 
     private:
         sf::RenderWindow& mWindow;
-        sf::RectangleShape divider;
+        std::vector<sf::RectangleShape> dividers;
 };
