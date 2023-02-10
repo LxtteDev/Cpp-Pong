@@ -1,5 +1,6 @@
 #include <iostream>
+#include "game/game.h"
 
 int main(int, char**) {
-    std::cout << "Hello, world!" << std::endl;
+    Game game();
 }
