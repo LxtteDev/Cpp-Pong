@@ -1,5 +1,4 @@
-#include <SFML/Graphics.hpp>
-#include <iostream>
+#include "../background/background.h"
 
 class Game {
     public:
@@ -9,7 +8,9 @@ class Game {
     private:
         void display();
 
-        sf::Window mWindow;    
+        sf::RenderWindow mWindow; 
+        Background& mBackground;
+
         bool open = 1;
         float deltaTime;
 };

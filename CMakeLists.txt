@@ -16,6 +16,7 @@ enable_testing()
 add_executable(Pong
     src/main.cpp
     src/game/game.h src/game/game.cpp
+    src/background/background.h src/background/background.cpp
 )
 
 target_link_libraries(Pong sfml-graphics)
