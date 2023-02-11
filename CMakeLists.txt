@@ -18,6 +18,7 @@ add_executable(Pong
     src/game/game.h src/game/game.cpp
     src/background/background.h src/background/background.cpp
     src/player/player.h src/player/player.cpp
+    src/ball/ball.h src/ball/ball.cpp
 )
 
 target_link_libraries(Pong sfml-graphics)

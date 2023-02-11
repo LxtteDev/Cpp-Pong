@@ -5,8 +5,9 @@ class Player {
     public:
         Player(sf::RenderWindow& window);
 
-        void Draw();
+        void Draw(float deltaTime);
         void Resize();
+        sf::Vector2f getPosition();
 
     private:
         sf::RenderWindow& mWindow;

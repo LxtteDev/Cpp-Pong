@@ -3,7 +3,8 @@
 Game::Game(sf::Vector2f size):
     mWindow(sf::VideoMode(size.x, size.y), "Pong"),
     mBackground(Background(mWindow)),
-    mPlayer(Player(mWindow))
+    mPlayer(Player(mWindow)),
+    mBall(Ball(mWindow))
 {
     std::cout << "Creating game" << std::endl;
 
@@ -21,7 +22,7 @@ void Game::display() {
     while (this->open) {
         sf::Time deltaTime = clock.restart();
         float deltaSeconds = deltaTime.asSeconds();
-        this->deltaTime = deltaSeconds / 1000;
+        this->deltaTime = deltaSeconds;
 
         sf::Event e;
 		while (this->mWindow.pollEvent(e))
@@ -31,12 +32,14 @@ void Game::display() {
                 this->mWindow.setView(sf::View(sf::FloatRect(0, 0, e.size.width, e.size.height)));
                 Game::mBackground.Resize();
                 Game::mPlayer.Resize();
+                Game::mBall.Resize();
             }
 
         this->mWindow.clear();
 
-        Game::mBackground.Draw();
-        Game::mPlayer.Draw();
+        Game::mBackground.Draw(this->deltaTime);
+        Game::mPlayer.Draw(this->deltaTime);
+        Game::mBall.Draw(this->deltaTime, Game::mPlayer.getPosition());
 
         this->mWindow.display();
     }

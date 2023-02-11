@@ -4,7 +4,7 @@ Background::Background(sf::RenderWindow& window): mWindow(window) {
     this->Resize();
 }
 
-void Background::Draw() {
+void Background::Draw(float deltaTime) {
     for (sf::RectangleShape divider : Background::dividers) {
         this->mWindow.draw(divider);
     }

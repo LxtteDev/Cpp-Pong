@@ -8,7 +8,7 @@ Player::Player(sf::RenderWindow& window): mWindow(window) {
     this->Resize();
 }
 
-void Player::Draw() {
+void Player::Draw(float deltaTime) {
     sf::Vector2f windowSize(this->mWindow.getView().getSize());
     sf::Vector2f size(Player::mPlayer.getSize());
 
@@ -31,4 +31,8 @@ void Player::Resize() {
     Player::mPlayer = sf::RectangleShape(size);
     Player::mPlayer.setOrigin(size / 2.0f);
     Player::mPlayer.setPosition(sf::Vector2f(15.0f, size.y / 2 + 10.0f));
+}
+
+sf::Vector2f Player::getPosition() {
+    return Player::mPlayer.getPosition();
 }

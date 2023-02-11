@@ -7,7 +7,7 @@ class Background {
     public:
         Background(sf::RenderWindow& window);
 
-        void Draw();
+        void Draw(float deltaTime);
         void Resize();
 
     private:
