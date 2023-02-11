@@ -15,9 +15,11 @@ enable_testing()
 
 add_executable(Pong
     src/main.cpp
+    src/math/math.h src/math/math.cpp
     src/game/game.h src/game/game.cpp
     src/background/background.h src/background/background.cpp
     src/player/player.h src/player/player.cpp
+    src/enemy/enemy.h src/enemy/enemy.cpp
     src/ball/ball.h src/ball/ball.cpp
 )
 
