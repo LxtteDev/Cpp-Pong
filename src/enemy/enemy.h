@@ -1,20 +1,19 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-#ifndef PLAYER_H_
-#define PLAYER_H_
+#ifndef ENEMY_H_
+#define ENEMY_H_
 
-class Player {
+class Enemy {
     public:
-        Player(sf::RenderWindow& window);
+        Enemy(sf::RenderWindow& window);
 
         void Draw(float deltaTime);
         void Resize();
-        sf::Vector2f getPosition();
 
     private:
         sf::RenderWindow& mWindow;
-        sf::RectangleShape mPlayer;
+        sf::RectangleShape mEnemy;
 };
 
 #endif

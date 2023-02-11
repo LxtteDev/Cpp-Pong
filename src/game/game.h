@@ -1,6 +1,10 @@
 #include "../background/background.h"
 #include "../player/player.h"
+#include "../enemy/enemy.h"
 #include "../ball/ball.h"
+
+#ifndef GAME_H_
+#define GAME_H_
 
 class Game {
     public:
@@ -12,9 +16,13 @@ class Game {
 
         sf::RenderWindow mWindow; 
         Background& mBackground;
-        Player& mPlayer;
+
         Ball& mBall;
+        Player& mPlayer;
+        Enemy& mEnemy;
 
         bool open = 1;
         float deltaTime;
 };
+
+#endif

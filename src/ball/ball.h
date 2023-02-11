@@ -2,6 +2,9 @@
 #include <iostream>
 #include <random>
 
+#ifndef BALL_H_
+#define BALL_H_
+
 class Ball {
     public:
         Ball(sf::RenderWindow& window);
@@ -14,3 +17,5 @@ class Ball {
         sf::RectangleShape mBall;
         sf::Vector2f velocity;
 };
+
+#endif

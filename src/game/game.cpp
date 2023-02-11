@@ -4,7 +4,8 @@ Game::Game(sf::Vector2f size):
     mWindow(sf::VideoMode(size.x, size.y), "Pong"),
     mBackground(Background(mWindow)),
     mPlayer(Player(mWindow)),
-    mBall(Ball(mWindow))
+    mBall(Ball(mWindow)),
+    mEnemy(Enemy(mWindow))
 {
     std::cout << "Creating game" << std::endl;
 
@@ -33,12 +34,14 @@ void Game::display() {
                 Game::mBackground.Resize();
                 Game::mPlayer.Resize();
                 Game::mBall.Resize();
+                Game::mEnemy.Resize();
             }
 
         this->mWindow.clear();
 
         Game::mBackground.Draw(this->deltaTime);
         Game::mPlayer.Draw(this->deltaTime);
+        Game::mEnemy.Draw(this->deltaTime);
         Game::mBall.Draw(this->deltaTime, Game::mPlayer.getPosition());
 
         this->mWindow.display();

@@ -1,10 +1,10 @@
 #include "player.h"
 
-float clamp(float value, float lower, float upper) {
+/* float clamp(float value, float lower, float upper) {
     return value < lower ? lower : (value > upper ? upper : value);
-}
+} */
 
-Player::Player(sf::RenderWindow& window): mWindow(window) {
+Player::Player(sf::RenderWindow& window): mWindow(window){
     this->Resize();
 }
 
@@ -16,7 +16,8 @@ void Player::Draw(float deltaTime) {
     float max = windowSize.y - size.y / 2 - 10.0f;
 
     sf::Vector2f mousePosition(sf::Mouse::getPosition(Player::mWindow));
-    float y = clamp(mousePosition.y, min, max);
+    // float y = Player::mMath.clamp(mousePosition.y, min, max);
+    float y = mousePosition.y < min ? min : (mousePosition.y > max ? max : mousePosition.y);
 
     sf::Vector2f position(15.0f, y);
     Player::mPlayer.setPosition(position);
