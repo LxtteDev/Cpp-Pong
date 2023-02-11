@@ -1,4 +1,5 @@
 #include "../background/background.h"
+#include "../player/player.h"
 
 class Game {
     public:
@@ -10,6 +11,7 @@ class Game {
 
         sf::RenderWindow mWindow; 
         Background& mBackground;
+        Player& mPlayer;
 
         bool open = 1;
         float deltaTime;

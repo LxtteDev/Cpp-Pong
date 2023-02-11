@@ -27,4 +27,14 @@ void Background::Resize() {
         divider.setPosition(position);
         dividers.push_back(divider);
     }
+
+    /* Code to display top and bottom bars. Removed because it dosnt look good.
+    for (int i = 0; i < 2; i++) {
+        sf::Vector2f size(windowSize.x, 10.0f);
+        sf::Vector2f position(0, i * ( windowSize.y - 10.0f ));
+
+        sf::RectangleShape bar(size);
+        bar.setPosition(position);
+        dividers.push_back(bar);
+    } */
 }

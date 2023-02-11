@@ -2,7 +2,8 @@
 
 Game::Game(sf::Vector2f size):
     mWindow(sf::VideoMode(size.x, size.y), "Pong"),
-    mBackground(Background(mWindow))
+    mBackground(Background(mWindow)),
+    mPlayer(Player(mWindow))
 {
     std::cout << "Creating game" << std::endl;
 
@@ -29,9 +30,13 @@ void Game::display() {
             else if (e.type == sf::Event::Resized) {
                 this->mWindow.setView(sf::View(sf::FloatRect(0, 0, e.size.width, e.size.height)));
                 Game::mBackground.Resize();
+                Game::mPlayer.Resize();
             }
 
+        this->mWindow.clear();
+
         Game::mBackground.Draw();
+        Game::mPlayer.Draw();
 
         this->mWindow.display();
     }
