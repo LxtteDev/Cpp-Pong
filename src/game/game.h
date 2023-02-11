@@ -1,7 +1,6 @@
 #include "../background/background.h"
 #include "../player/player.h"
 #include "../enemy/enemy.h"
-#include "../ball/ball.h"
 
 #ifndef GAME_H_
 #define GAME_H_

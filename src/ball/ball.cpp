@@ -11,7 +11,7 @@ Ball::Ball(sf::RenderWindow& window): mWindow(window) {
     this->Resize();
 }
 
-void Ball::Draw(float deltaTime, sf::Vector2f playerPosition) {
+void Ball::Draw(float deltaTime, sf::Vector2f playerPosition, sf::Vector2f enemyPosition) {
     sf::Vector2f windowSize(this->mWindow.getView().getSize());
     sf::Vector2f move(Ball::velocity * deltaTime);
     sf::Vector2f position(Ball::mBall.getPosition() + move);
@@ -22,9 +22,11 @@ void Ball::Draw(float deltaTime, sf::Vector2f playerPosition) {
     if (position.x<= 5.0f || position.x >= windowSize.x - 5.0f)
         Ball::velocity = sf::Vector2f(-velocity.x, velocity.y);
 
-    // Player padel
+    // Padels
     float padelSize = windowSize.y / 7 / 2;
     if (position.y <= playerPosition.y + padelSize && position.y >= playerPosition.y - padelSize && position.x >= 24.0f && position.x <= 26.0f)
+        Ball::velocity = sf::Vector2f(-velocity.x, velocity.y);
+    if (position.y <= enemyPosition.y + padelSize && position.y >= enemyPosition.y - padelSize && position.x >= windowSize.x - 26.0f && position.x <= windowSize.x - 24.0f)
         Ball::velocity = sf::Vector2f(-velocity.x, velocity.y);
 
     Ball::mBall.setPosition(position);
@@ -38,4 +40,8 @@ void Ball::Resize() {
     Ball::mBall = sf::RectangleShape(size);
     Ball::mBall.setOrigin(size / 2.0f);
     Ball::mBall.setPosition(windowSize / 2.0f);
+}
+
+sf::Vector2f Ball::getPosition() {
+    return Ball::mBall.getPosition();
 }

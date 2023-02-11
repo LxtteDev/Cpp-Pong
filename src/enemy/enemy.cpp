@@ -1,6 +1,6 @@
 #include "enemy.h"
 
-Enemy::Enemy(sf::RenderWindow& window): mWindow(window) {
+Enemy::Enemy(sf::RenderWindow& window, Ball& ball): mWindow(window), mBall(ball) {
     this->Resize();
 }
 
@@ -11,9 +11,8 @@ void Enemy::Draw(float deltaTime) {
     float min = size.y / 2 + 10.0f;
     float max = windowSize.y - size.y / 2 - 10.0f;
 
-    sf::Vector2f mousePosition(sf::Mouse::getPosition(Enemy::mWindow));
-    // float y = Enemy::mMath.clamp(mousePosition.y, min, max);
-    float y = mousePosition.y < min ? min : (mousePosition.y > max ? max : mousePosition.y);
+    sf::Vector2f ballPosition = Enemy::mBall.getPosition();
+    float y = ballPosition.y < min ? min : (ballPosition.y > max ? max : ballPosition.y);
 
     sf::Vector2f position(windowSize.x - 15.0f, y);
     Enemy::mEnemy.setPosition(position);
@@ -28,4 +27,8 @@ void Enemy::Resize() {
     Enemy::mEnemy = sf::RectangleShape(size);
     Enemy::mEnemy.setOrigin(size / 2.0f);
     Enemy::mEnemy.setPosition(sf::Vector2f(windowSize.x - 15.0f, size.y / 2 + 10.0f));
+}
+
+sf::Vector2f Enemy::getPosition() {
+    return Enemy::mEnemy.getPosition();
 }
