@@ -7,6 +7,7 @@ Ball::Ball(sf::RenderWindow& window): mWindow(window) {
     std::uniform_int_distribution<> dis(0, 1);
 
     Ball::velocity = sf::Vector2f(dis(gen) == 0 ? -speed : speed, dis(gen) == 0 ? -speed : speed);
+    // Ball::velocity = sf::Vector2f(speed, -speed);
 
     this->Resize();
 }
@@ -44,4 +45,8 @@ void Ball::Resize() {
 
 sf::Vector2f Ball::getPosition() {
     return Ball::mBall.getPosition();
+}
+
+sf::Vector2f Ball::getVelocity() {
+    return Ball::velocity;
 }

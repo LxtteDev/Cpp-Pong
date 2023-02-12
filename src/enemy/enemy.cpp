@@ -8,14 +8,46 @@ void Enemy::Draw(float deltaTime) {
     sf::Vector2f windowSize(this->mWindow.getView().getSize());
     sf::Vector2f size(Enemy::mEnemy.getSize());
 
-    float min = size.y / 2 + 10.0f;
-    float max = windowSize.y - size.y / 2 - 10.0f;
-
+    // Predict ball (Could be better, doest make mistakes)
     sf::Vector2f ballPosition = Enemy::mBall.getPosition();
-    float y = ballPosition.y < min ? min : (ballPosition.y > max ? max : ballPosition.y);
+    sf::Vector2f ballVelocity = Enemy::mBall.getVelocity();
+    if (ballPosition.x > windowSize.x / 2 && ballVelocity.x > 0) {
+        float y = 0;
+        float min = size.y / 2 + 10.0f;
+        float max = windowSize.y - size.y / 2 - 10.0f;
 
-    sf::Vector2f position(windowSize.x - 15.0f, y);
-    Enemy::mEnemy.setPosition(position);
+        if (ballVelocity.y < 0) {
+            // Moving up
+            float distanceToTop = ballPosition.y;
+            float distanceToPadel = windowSize.x - ballPosition.x - 30.0f;
+
+            if (distanceToPadel > distanceToTop) {
+                sf::Vector2f firstPrediction(ballPosition + sf::Vector2f(distanceToTop, -distanceToTop));
+                float newDistanceToPadel = windowSize.x - firstPrediction.x - 30.0f;
+                sf::Vector2f prediction(firstPrediction + sf::Vector2f(newDistanceToPadel, newDistanceToPadel));
+                y = prediction.y;
+            } else {
+                sf::Vector2f prediction(ballPosition + sf::Vector2f(distanceToPadel, -distanceToPadel));
+                y = prediction.y;
+            }
+        } else {
+            float distanceToBottom = windowSize.y - ballPosition.y;
+            float distanceToPadel = windowSize.x - ballPosition.x - 30.0f;
+
+            if (distanceToPadel > distanceToBottom) {
+                sf::Vector2f firstPrediction(ballPosition + sf::Vector2f(distanceToBottom, distanceToBottom));
+                float newDistanceToPadel = windowSize.x - firstPrediction.x - 30.0f;
+                sf::Vector2f prediction(firstPrediction + sf::Vector2f(newDistanceToPadel, -newDistanceToPadel));
+                y = prediction.y;
+            } else {
+                sf::Vector2f prediction(ballPosition + sf::Vector2f(distanceToPadel, distanceToPadel));
+                y = prediction.y;
+            }
+        }
+
+        y = y < min ? min : (y > max ? max : y);
+        Enemy::mEnemy.setPosition(sf::Vector2f(windowSize.x - 15.0f, y));
+    }
 
     Enemy::mWindow.draw(Enemy::mEnemy);
 }

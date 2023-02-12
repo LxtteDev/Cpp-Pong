@@ -12,6 +12,7 @@ class Ball {
         void Draw(float deltaTime, sf::Vector2f playerPosition, sf::Vector2f enemyPosition);
         void Resize();
         sf::Vector2f getPosition();
+        sf::Vector2f getVelocity();
 
     private:
         sf::RenderWindow& mWindow;
