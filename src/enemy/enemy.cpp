@@ -46,9 +46,15 @@ void Enemy::Draw(float deltaTime) {
         }
 
         y = y < min ? min : (y > max ? max : y);
-        Enemy::mEnemy.setPosition(sf::Vector2f(windowSize.x - 15.0f, y));
-    }
 
+        float currentPosition = Enemy::mEnemy.getPosition().y;
+        float tweenValue = currentPosition + (y - currentPosition) * 1.0f * deltaTime;
+        Enemy::mEnemy.setPosition(sf::Vector2f(windowSize.x - 15.0f, tweenValue));
+
+        if (abs(y - currentPosition) < 0.1)
+            Enemy::mEnemy.setPosition(sf::Vector2f(windowSize.x - 15.0f, y));
+    }
+    
     Enemy::mWindow.draw(Enemy::mEnemy);
 }
 
