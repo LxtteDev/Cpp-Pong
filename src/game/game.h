@@ -1,6 +1,7 @@
 #include "../background/background.h"
 #include "../player/player.h"
 #include "../enemy/enemy.h"
+#include "../score/score.h"
 
 #ifndef GAME_H_
 #define GAME_H_
@@ -17,6 +18,7 @@ class Game {
         Background& mBackground;
 
         Ball& mBall;
+        Score& mScore;
         Player& mPlayer;
         Enemy& mEnemy;
 

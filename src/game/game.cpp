@@ -5,6 +5,7 @@ Game::Game(sf::Vector2f size):
     mBackground(Background(mWindow)),
     mPlayer(Player(mWindow)),
     mBall(Ball(mWindow)),
+    mScore(Score(mWindow)),
     mEnemy(Enemy(mWindow, mBall))
 {
     std::cout << "Creating game" << std::endl;
@@ -43,6 +44,7 @@ void Game::display() {
         Game::mPlayer.Draw(this->deltaTime);
         Game::mEnemy.Draw(this->deltaTime);
         Game::mBall.Draw(this->deltaTime, Game::mPlayer.getPosition(), Game::mEnemy.getPosition());
+        Game::mScore.draw();
 
         this->mWindow.display();
     }
