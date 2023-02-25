@@ -5,8 +5,8 @@ Game::Game(sf::Vector2f size):
     mBackground(Background(mWindow)),
     mPlayer(Player(mWindow)),
     mBall(Ball(mWindow)),
-    mEnemy(Enemy(mWindow, mBall)),
-    mScore(Score(mWindow, mBall))
+    mScore(Score(mWindow)),
+    mEnemy(Enemy(mWindow, mBall))
 {
     std::cout << "Creating game" << std::endl;
 
@@ -36,10 +36,9 @@ void Game::display() {
                 Game::mPlayer.Resize();
                 Game::mBall.Resize();
                 Game::mEnemy.Resize();
-                Game::mScore.Resize();
             }
 
-        this->mWindow.clear();
+        // this->mWindow.clear();
 
         Game::mBackground.Draw(this->deltaTime);
         Game::mPlayer.Draw(this->deltaTime);

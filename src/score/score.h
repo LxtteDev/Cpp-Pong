@@ -1,28 +1,22 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <string> 
-#include "../ball/ball.h"
 
 #ifndef SCORE_H_
 #define SCORE_H_
 
 class Score {
     public:
-        Score(sf::RenderWindow& window, Ball& ball);
+        Score(sf::RenderWindow& window);
 
         void updateScore(int player, int enemey);
-        void Resize();
         void draw(float deltaTime);
     private:
-        Ball& mBall;
         sf::RenderWindow& mWindow;
-        sf::Font font;
 
-        sf::Vector2f playerPosition;
-        sf::Vector2f enemyPosition;
-
-        bool canScore = 1;
+        sf::Text& playerText;
         int playerScore = 0;
+
+        sf::Text& enemyText;
         int enemyScore = 0;
 };
 
