@@ -38,13 +38,13 @@ void Game::display() {
                 Game::mEnemy.Resize();
             }
 
-        this->mWindow.clear();
+        // this->mWindow.clear();
 
         Game::mBackground.Draw(this->deltaTime);
         Game::mPlayer.Draw(this->deltaTime);
         Game::mEnemy.Draw(this->deltaTime);
         Game::mBall.Draw(this->deltaTime, Game::mPlayer.getPosition(), Game::mEnemy.getPosition());
-        Game::mScore.draw();
+        Game::mScore.draw(this->deltaTime);
 
         this->mWindow.display();
     }

@@ -12,11 +12,12 @@ class Score {
         void draw(float deltaTime);
     private:
         sf::RenderWindow& mWindow;
-        sf::Text playerText;
-        sf::Text playerScore;
 
+        sf::Text& playerText;
         int playerScore = 0;
+
+        sf::Text& enemyText;
         int enemyScore = 0;
-}
+};
 
 #endif
