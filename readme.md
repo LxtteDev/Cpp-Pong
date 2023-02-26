@@ -1,5 +1,5 @@
 # C++ Pong
-*2/9/23 - Now*
+*9/2/23 - 25/2/23*
 
 The game that probably should have been my first SFML project.
 
